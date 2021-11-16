@@ -42,8 +42,14 @@ class CastsController < ApplicationController
   # DELETE /casts/1
   def destroy
     @cast.destroy
-    redirect_to casts_url, notice: 'Cast was successfully destroyed.'
+    message = "Cast was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to casts_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
