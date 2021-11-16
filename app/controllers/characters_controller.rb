@@ -1,10 +1,11 @@
 class CharactersController < ApplicationController
-  before_action :set_character, only: [:show, :edit, :update, :destroy]
+  before_action :set_character, only: %i[show edit update destroy]
 
   # GET /characters
   def index
     @q = Character.ransack(params[:q])
-    @characters = @q.result(:distinct => true).includes(:movie, :casts).page(params[:page]).per(10)
+    @characters = @q.result(distinct: true).includes(:movie,
+                                                     :casts).page(params[:page]).per(10)
   end
 
   # GET /characters/1
@@ -18,17 +19,16 @@ class CharactersController < ApplicationController
   end
 
   # GET /characters/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /characters
   def create
     @character = Character.new(character_params)
 
     if @character.save
-      message = 'Character was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Character was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @character, notice: message
       end
@@ -40,7 +40,7 @@ class CharactersController < ApplicationController
   # PATCH/PUT /characters/1
   def update
     if @character.update(character_params)
-      redirect_to @character, notice: 'Character was successfully updated.'
+      redirect_to @character, notice: "Character was successfully updated."
     else
       render :edit
     end
@@ -50,22 +50,22 @@ class CharactersController < ApplicationController
   def destroy
     @character.destroy
     message = "Character was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to characters_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_character
-      @character = Character.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def character_params
-      params.require(:character).permit(:character_name, :movie_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_character
+    @character = Character.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def character_params
+    params.require(:character).permit(:character_name, :movie_id)
+  end
 end

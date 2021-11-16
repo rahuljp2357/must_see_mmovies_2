@@ -2,7 +2,7 @@ class Character < ApplicationRecord
   # Direct associations
 
   has_many   :casts,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :movie
 
@@ -15,5 +15,4 @@ class Character < ApplicationRecord
   def to_s
     character_name
   end
-
 end

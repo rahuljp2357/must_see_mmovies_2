@@ -4,18 +4,18 @@ class Actor < ApplicationRecord
   # Direct associations
 
   has_many   :casts,
-             :foreign_key => "actors_id",
-             :dependent => :destroy
+             foreign_key: "actors_id",
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :movies,
-             :through => :casts,
-             :source => :movie
+             through: :casts,
+             source: :movie
 
   has_many   :directors,
-             :through => :movies,
-             :source => :director
+             through: :movies,
+             source: :director
 
   # Validations
 
@@ -24,5 +24,4 @@ class Actor < ApplicationRecord
   def to_s
     actor_name
   end
-
 end

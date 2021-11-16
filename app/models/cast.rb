@@ -4,7 +4,7 @@ class Cast < ApplicationRecord
   belongs_to :character
 
   belongs_to :actors,
-             :class_name => "Actor"
+             class_name: "Actor"
 
   belongs_to :movie
 
@@ -17,5 +17,4 @@ class Cast < ApplicationRecord
   def to_s
     character.to_s
   end
-
 end

@@ -9,7 +9,7 @@ class DirectorResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :movies
+  has_many :movies
 
   # Indirect associations
 
@@ -21,10 +21,9 @@ class DirectorResource < ApplicationResource
     end
   end
 
-
   filter :actors_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:actors).where(:casts => {:actors_id => value})
+      scope.eager_load(:actors).where(casts: { actors_id: value })
     end
   end
 end

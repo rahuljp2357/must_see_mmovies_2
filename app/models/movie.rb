@@ -4,16 +4,16 @@ class Movie < ApplicationRecord
   belongs_to :director
 
   has_many   :characters,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :casts,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :actors,
-             :through => :casts,
-             :source => :actors
+             through: :casts,
+             source: :actors
 
   # Validations
 
@@ -22,5 +22,4 @@ class Movie < ApplicationRecord
   def to_s
     title
   end
-
 end

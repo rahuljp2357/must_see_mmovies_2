@@ -4,13 +4,13 @@ class Director < ApplicationRecord
   # Direct associations
 
   has_many   :movies,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :actors,
-             :through => :movies,
-             :source => :actors
+             through: :movies,
+             source: :actors
 
   # Validations
 
@@ -19,5 +19,4 @@ class Director < ApplicationRecord
   def to_s
     name
   end
-
 end

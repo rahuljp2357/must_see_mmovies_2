@@ -24,10 +24,9 @@ class ActorResource < ApplicationResource
     end
   end
 
-
   filter :director_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:directors).where(:movies => {:director_id => value})
+      scope.eager_load(:directors).where(movies: { director_id: value })
     end
   end
 end
