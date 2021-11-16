@@ -10,24 +10,18 @@
   <ul class="list-group list-group-flush">
     <% @character.casts.each do |cast| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to cast, cast %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <%= link_to cast, method: :delete, data: { confirm: "Do you really want to delete this cast" } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="character_casts_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "characters/character_casts_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

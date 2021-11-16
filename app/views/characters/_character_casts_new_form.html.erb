@@ -1,32 +1,18 @@
-<!-- Form cast start -->
 <%= form_with(model: @cast, local: true) do |f| %>
-<!-- Form cast end -->
 
-  <!-- Label and input for character_id start -->
-  <!-- Input for character_id start -->
   <%= f.hidden_field :character_id, value: @character.id %>
-  <!-- Input for character_id end -->
-  <!-- Label and input for character_id end -->
 
-  <!-- Label and input for movie_id start -->
   <div class="form-group">
     <%= f.label :movie_id %>
 
-    <!-- Input for movie_id start -->
     <%= f.collection_select :movie_id, Movie.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for movie_id end -->
   </div>
-  <!-- Label and input for movie_id end -->
 
-  <!-- Label and input for actors_id start -->
   <div class="form-group">
     <%= f.label :actors_id %>
 
-    <!-- Input for actors_id start -->
     <%= f.collection_select :actors_id, Actor.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for actors_id end -->
   </div>
-  <!-- Label and input for actors_id end -->
 
   <%= f.submit "Create cast", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

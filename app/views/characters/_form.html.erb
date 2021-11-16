@@ -1,7 +1,6 @@
 <% was_validated = character.errors.any? %>
 
 <%= form_with(model: character, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for character_name start -->
   <div class="form-group">
     <% character_name_class = "form-control" %>
     <% character_name_was_invalid = character.errors.include?(:character_name) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :character_name %>
-    <!-- Input for character_name start -->
     <%= f.text_field :character_name, class: character_name_class, placeholder: "Enter character name" %>
-    <!-- Input for character_name end -->
     <% if character_name_was_invalid %>
       <% character.errors.full_messages_for(:character_name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for character_name end -->
-  <!-- Label and input for movie_id start -->
   <div class="form-group">
     <% movie_class = "form-control" %>
     <% movie_was_invalid = character.errors.include?(:movie) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :movie_id %>
-    <!-- Input for movie_id start -->
     <%= f.collection_select :movie_id, Movie.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for movie_id end -->
     <% if movie_was_invalid %>
       <% character.errors.full_messages_for(:movie).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for movie_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
