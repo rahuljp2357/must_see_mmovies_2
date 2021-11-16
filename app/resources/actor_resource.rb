@@ -14,6 +14,8 @@ class ActorResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :movies
+
   has_many :directors do
     assign_each do |actor, directors|
       directors.select do |d|
