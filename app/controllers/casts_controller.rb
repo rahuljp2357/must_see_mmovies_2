@@ -24,7 +24,12 @@ class CastsController < ApplicationController
     @cast = Cast.new(cast_params)
 
     if @cast.save
-      redirect_to @cast, notice: 'Cast was successfully created.'
+      message = 'Cast was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @cast, notice: message
+      end
     else
       render :new
     end

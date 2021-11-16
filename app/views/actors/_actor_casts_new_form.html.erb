@@ -1,0 +1,32 @@
+<!-- Form cast start -->
+<%= form_with(model: @cast, local: true) do |f| %>
+<!-- Form cast end -->
+
+  <!-- Label and input for character_id start -->
+  <div class="form-group">
+    <%= f.label :character_id %>
+
+    <!-- Input for character_id start -->
+    <%= f.text_field :character_id, class: "form-control" %>
+    <!-- Input for character_id end -->
+  </div>
+  <!-- Label and input for character_id end -->
+
+  <!-- Label and input for movie_id start -->
+  <div class="form-group">
+    <%= f.label :movie_id %>
+
+    <!-- Input for movie_id start -->
+    <%= f.text_field :movie_id, class: "form-control" %>
+    <!-- Input for movie_id end -->
+  </div>
+  <!-- Label and input for movie_id end -->
+
+  <!-- Label and input for actors_id start -->
+  <!-- Input for actors_id start -->
+  <%= f.hidden_field :actors_id, value: @actor.id %>
+  <!-- Input for actors_id end -->
+  <!-- Label and input for actors_id end -->
+
+  <%= f.submit "Create cast", class: "btn btn-block btn-outline-secondary" %>
+<% end %>
