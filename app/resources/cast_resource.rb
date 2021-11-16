@@ -8,6 +8,9 @@ class CastResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :actors,
+             resource: ActorResource
+
   belongs_to :movie
 
   # Indirect associations
