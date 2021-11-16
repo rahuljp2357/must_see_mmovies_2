@@ -1,6 +1,8 @@
 class Cast < ApplicationRecord
   # Direct associations
 
+  belongs_to :character
+
   belongs_to :actors,
              :class_name => "Actor"
 

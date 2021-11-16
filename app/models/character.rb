@@ -1,6 +1,9 @@
 class Character < ApplicationRecord
   # Direct associations
 
+  has_many   :casts,
+             :dependent => :destroy
+
   belongs_to :movie
 
   # Indirect associations
