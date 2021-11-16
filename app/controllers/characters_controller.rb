@@ -1,27 +1,22 @@
 class CharactersController < ApplicationController
   before_action :set_character, only: %i[show edit update destroy]
 
-  # GET /characters
   def index
     @q = Character.ransack(params[:q])
     @characters = @q.result(distinct: true).includes(:movie,
                                                      :casts).page(params[:page]).per(10)
   end
 
-  # GET /characters/1
   def show
     @cast = Cast.new
   end
 
-  # GET /characters/new
   def new
     @character = Character.new
   end
 
-  # GET /characters/1/edit
   def edit; end
 
-  # POST /characters
   def create
     @character = Character.new(character_params)
 
@@ -37,7 +32,6 @@ class CharactersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /characters/1
   def update
     if @character.update(character_params)
       redirect_to @character, notice: "Character was successfully updated."
@@ -46,7 +40,6 @@ class CharactersController < ApplicationController
     end
   end
 
-  # DELETE /characters/1
   def destroy
     @character.destroy
     message = "Character was successfully deleted."
@@ -59,12 +52,10 @@ class CharactersController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_character
     @character = Character.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def character_params
     params.require(:character).permit(:character_name, :movie_id)
   end
