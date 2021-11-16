@@ -16,7 +16,7 @@
 
     <%= f.label :character_id %>
     <!-- Input for character_id start -->
-    <%= f.number_field :character_id, class: character_class, placeholder: "Enter character" %>
+    <%= f.collection_select :character_id, Character.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for character_id end -->
     <% if character_was_invalid %>
       <% cast.errors.full_messages_for(:character).each do |message| %>
