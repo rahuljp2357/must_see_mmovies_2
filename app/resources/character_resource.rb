@@ -7,6 +7,8 @@ class CharacterResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :casts
+
   belongs_to :movie
 
   # Indirect associations
