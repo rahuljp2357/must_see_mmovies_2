@@ -12,7 +12,11 @@
 
       <dt>Movie</dt>
       <!-- Display movie_id start -->
-      <dd><%= character.movie_id %></dd>
+      <dd>
+        <% if @character.movie.present? %>
+          <%= link_to character.movie, character.movie %>
+        <% end %>
+      </dd>
       <!-- Display movie_id end -->
 
     </dl>

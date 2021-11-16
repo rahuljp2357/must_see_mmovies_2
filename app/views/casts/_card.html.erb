@@ -7,17 +7,29 @@
     <dl class="mb-1">
       <dt>Character</dt>
       <!-- Display character_id start -->
-      <dd><%= cast.character_id %></dd>
+      <dd>
+        <% if @cast.character.present? %>
+          <%= link_to cast.character, cast.character %>
+        <% end %>
+      </dd>
       <!-- Display character_id end -->
 
       <dt>Movie</dt>
       <!-- Display movie_id start -->
-      <dd><%= cast.movie_id %></dd>
+      <dd>
+        <% if @cast.movie.present? %>
+          <%= link_to cast.movie, cast.movie %>
+        <% end %>
+      </dd>
       <!-- Display movie_id end -->
 
       <dt>Actors</dt>
       <!-- Display actors_id start -->
-      <dd><%= cast.actors_id %></dd>
+      <dd>
+        <% if @cast.actors.present? %>
+          <%= link_to cast.actors, cast.actors %>
+        <% end %>
+      </dd>
       <!-- Display actors_id end -->
 
     </dl>
